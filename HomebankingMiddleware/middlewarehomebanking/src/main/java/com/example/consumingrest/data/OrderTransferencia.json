@@ -1,0 +1,15 @@
+{
+    "Transaction": {
+       "Fecha": "2021-04-13T04:00:00Z",
+       "NombreOrigen": "Graciani Josefo Edulualdo",
+       "CuentaOrigen": "8049",
+       "NombreDestinatario": "Jorge Leonardo",
+       "CuentaDestino": "0004592819",
+       "cbuDestinatario": "1234567891012131415169",
+       "Moneda": "Dolar",
+       "Importe": "6000.745",
+       "PlazoAcreditacion": "Transferencia inmediata",
+       "Concepto": "Varios",
+       "NroComprobante": "7550"
+    }
+ }

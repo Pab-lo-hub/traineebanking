@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<clients>
+    <client id="1">
+        <tipoDni>LE</tipoDni>
+        <userDni>1000100</userDni>
+    </client>
+</clients>
