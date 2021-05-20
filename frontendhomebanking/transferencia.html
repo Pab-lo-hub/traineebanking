@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Subject board</title>
+</head>
+<header class="row">
+    <div class="col">
+        <nav>
+            <button id="burguer" class="hamburger hamburger--minus" type="button" data-toggle="collapse"
+                data-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto menu">
+                    <li class="liHamburguesa">
+                        <a href="account.html" class="btn1 aHamburguesa"><i class="fas fa-home"></i><br> Home<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="liHamburguesa">
+                        <a href="transferencia.html" class="btn3 aHamburguesa"><i class="far fa-credit-card"></i><br>
+                            Transference</a>
+                    </li>
+                    <li class="liHamburguesa">
+                        <a class="btn2 aHamburguesa"><i class="fas fa-address-card"></i> <br>
+                            About</a>
+                    </li>
+                    <li class="liHamburguesa5">
+                        <a class="btn5 aHamburguesa"><i class="fas fa-users"></i><br>
+                            Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</header>
+<body>
+    <div id="app">
+        <div id="HoMe" class="container-fluid d-flex justify-content-center bg-light">
+            <form v-on:submit.prevent class="bg-secondary bg-gradient form-control w-50 p-3">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre Origen</label>
+                    <input v-model="transferencia.nombreOrigen" class="form-control" type="text" placeholder="Readonly input here…" readonly>
+                    <!-- <input v-model="transferencia.nombreOrigen" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Ingrese nombre origen"> -->
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Cuenta Origen</label>
+                    <input v-model="transferencia.cuentaOrigen" class="form-control" type="number" placeholder="Readonly input here…" readonly>
+                    <!-- <input v-model="transferencia.cuentaOrigen" class="form-control" id="exampleInputPassword1"
+                        placeholder="Cuenta Origen"> -->
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Nombre Destinatario</label>
+                    <input v-model="transferencia.nombreDestinatario" type="nombreDestinatario" class="form-control"
+                        id="nombreDestinatario" placeholder="Ingrese nombre destinatario">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Numero Cuenta Destino</label>
+                    <input v-model="transferencia.cuentaDestino" type="number" class="form-control"
+                        id="cuentaDestino" placeholder="Ultimos 7 digitos de cuenta destino" maxlength="7"oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">CBU Destinatario</label>
+                    <input v-model="transferencia.cbuDestinatario" type="number" class="form-control validate"
+                        id="cbuDestinatario" placeholder="22 digitos de CBU destinatario" maxlength="22" oninput=" if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tipo de Moneda</label>
+                    <select v-model="transferencia.moneda" class="form-control" type="text" class="form-control" id="moneda" >
+                        <option>Dolar</option>
+                        <option>Pesos Chilenos</option>
+                        <option>Pesos Argentinos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Importe</label>
+                    <input v-model="transferencia.importe" type="number" class="form-control" id="importe"
+                        placeholder="importe">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Plazo de Acreditacion</label>
+                    <!-- <input v-model="transferencia.plazoAcreditacion" type="text" class="form-control"
+                        id="plazoAcreditacion" placeholder="plazoAcreditacion"> -->
+                        <select v-model="transferencia.plazoAcreditacion" class="form-control" type="text" id="moneda" >
+                            <option>Inmediato</option>
+                            <option>A 48hs</option>
+                            <option>A 30 dias</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Concepto</label>
+                    <!-- <input v-model="transferencia.concepto" type="text" class="form-control" id="concepto"
+                        placeholder="concepto"> -->
+                        <select v-model="transferencia.concepto" class="form-control" type="text" id="moneda" placeholder="concepto">
+                            <option>Variosss</option>
+                            <option>Prestamo</option>
+                            <option>Alquiler</option>
+                            <option>Venta</option>
+                        </select>
+                </div>
+
+                <button v-on:click="sendTransferencia" class="btn btn-primary">Realizar Transferencia</button>
+            </form>
+        </div>
+    </div>
+    <!-- JS FontAwesome -->
+    <script src="https://kit.fontawesome.com/a2e8d0339c.js"></script>
+    <!-- Boostrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="transferencia.js"></script>
+</body>
+</html>
